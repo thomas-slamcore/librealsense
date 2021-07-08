@@ -235,3 +235,24 @@ function try_module_insert {
 	fi
 	printf "\n"
 }
+
+function try_module_install {
+	module_name=$1
+	src_ko=$2
+	tgt_ko=$3
+	backup_available=1
+	dependent_modules=""
+
+	printf "\e[32mReplacing \e[93m\e[1m%s \e[32m -\n\e[0m" ${module_name}
+
+	# backup the existing module (if available) for recovery
+	if [ -f ${tgt_ko} ];
+	then
+		sudo cp ${tgt_ko} ${tgt_ko}.bckup
+	else
+		backup_available=0
+	fi
+
+	# copy the patched module to target location
+	sudo cp ${src_ko} ${tgt_ko}
+}

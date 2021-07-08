@@ -1,0 +1,12 @@
+diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+index 640aabe69..d32a89726 100644
+--- a/include/media/videobuf2-core.h
++++ b/include/media/videobuf2-core.h
+@@ -571,6 +571,7 @@ struct vb2_queue {
+ 	const struct vb2_buf_ops	*buf_ops;
+ 
+ 	void				*drv_priv;
++	u32				subsystem_flags;
+ 	unsigned int			buf_struct_size;
+ 	u32				timestamp_flags;
+ 	gfp_t				gfp_flags;
